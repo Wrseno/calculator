@@ -28,7 +28,7 @@ function inputDigit(digit) {
 const buttons = document.querySelectorAll(".button");
 
 for (const button of buttons) {
-  button.addEventListener("click", function (e) {
+  button.addEventListener("click", (e) => {
     const target = e.target;
 
     if (target.classList.contains("clear")) {
@@ -58,6 +58,13 @@ for (const button of buttons) {
     updateDispay();
   });
 }
+
+window.addEventListener("keydown", (e) => {
+  if (e.key == "1") {
+    inputDigit(1);
+    updateDispay();
+  }
+});
 
 function inversNumber() {
   if (calculator.displayNumber === "0") {
@@ -98,18 +105,27 @@ function performCalculation() {
   if (calculator.operator === "+") {
     result =
       parseInt(calculator.firstNumber) + parseInt(calculator.displayNumber);
-  } else {
+  } else if (calculator.operator === "-") {
     result =
       parseInt(calculator.firstNumber) - parseInt(calculator.displayNumber);
+  } else if (calculator.operator === "*") {
+    result =
+      parseInt(calculator.firstNumber) * parseInt(calculator.displayNumber);
+  } else if (calculator.operator === "/") {
+    result =
+      parseInt(calculator.firstNumber) / parseInt(calculator.displayNumber);
+  } else if (calculator.operator === "%") {
+    result =
+      parseInt(calculator.firstNumber) % parseInt(calculator.displayNumber);
   }
 
-  calculator.displayNumber = result;
+  const {firstNumber, displayNumber: secondNumber, operator} = calculator;
 
   const history = {
-    firstNumber: calculator.firstNumber,
-    secondNumber: calculator.displayNumber,
-    operator: calculator.operator,
-    result: result,
+    firstNumber,
+    secondNumber,
+    operator,
+    result,
   };
 
   putHistory(history);
