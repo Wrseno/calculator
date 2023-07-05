@@ -74,13 +74,23 @@ function handleOperator(operator) {
 
     calculator.displayNumber = "0";
   } else {
-    alert("Operator sudah ditetapkan");
+    Swal.fire({
+      title: "error",
+      text: `Anda sudah menetapkan operator "${operator}"`,
+      icon: "error",
+      confirmButtonText: "Oke",
+    });
   }
 }
 
 function performCalculation() {
   if (calculator.firstNumber == null || calculator.operator == null) {
-    alert("Anda belum menetapkan operator");
+    Swal.fire({
+      title: "error",
+      text: "Anda belum menetapkan operator",
+      icon: "error",
+      confirmButtonText: "Oke",
+    });
     return;
   }
 
