@@ -5,7 +5,7 @@ const calculator = {
   waitingForSecondNumber: false,
 };
 
-function updateDispay() {
+function updateDisplay() {
   document.querySelector("#displayNumber").textContent =
     calculator.displayNumber;
 }
@@ -33,19 +33,19 @@ for (const button of buttons) {
 
     if (target.classList.contains("clear")) {
       clearCalculator();
-      updateDispay();
+      updateDisplay();
       return;
     }
 
     if (target.classList.contains("negative")) {
       inversNumber();
-      updateDispay();
+      updateDisplay();
       return;
     }
 
     if (target.classList.contains("equals")) {
       performCalculation();
-      updateDispay();
+      updateDisplay();
       return;
     }
 
@@ -55,14 +55,57 @@ for (const button of buttons) {
     }
 
     inputDigit(target.textContent);
-    updateDispay();
+    updateDisplay();
   });
 }
 
 window.addEventListener("keydown", (e) => {
   if (e.key == "1") {
     inputDigit(1);
-    updateDispay();
+    updateDisplay();
+  } else if (e.key == "2") {
+    inputDigit(2);
+    updateDisplay();
+  } else if (e.key == "3") {
+    inputDigit(3);
+    updateDisplay();
+  } else if (e.key == "4") {
+    inputDigit(4);
+    updateDisplay();
+  } else if (e.key == "5") {
+    inputDigit(5);
+    updateDisplay();
+  } else if (e.key == "6") {
+    inputDigit(6);
+    updateDisplay();
+  } else if (e.key == "7") {
+    inputDigit(7);
+    updateDisplay();
+  } else if (e.key == "8") {
+    inputDigit(8);
+    updateDisplay();
+  } else if (e.key == "9") {
+    inputDigit(9);
+    updateDisplay();
+  } else if (e.key == "0") {
+    inputDigit(0);
+    updateDisplay();
+  } else if (e.key == "Enter") {
+    performCalculation();
+    updateDisplay();
+    return;
+  } else if (e.key == "-") {
+    handleOperator(e.key);
+    return;
+  } else if (e.key == "+") {
+    handleOperator(e.key);
+    return;
+  } else if (e.key == "*") {
+    handleOperator(e.key);
+    return;
+  } else if (e.key == "/") {
+    handleOperator(e.key);
+    return;
   }
 });
 
